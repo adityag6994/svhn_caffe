@@ -64,8 +64,9 @@ for current_image in range(min_range, max_range):
 	
 	#Revert the image,and normalize it to 0-1 range
 	img = 1.0 - img/255.0
+	mean_image = 1.0 - mean_image/255
 	# With mean image
-	out = net.forward_all(data=np.asarray([img.transpose(2,1,0) - mean_image]))
+	out = net.forward_all(data=np.asarray([img.transpose(2,0,1) - mean_image]))
 	# Without mean image 
 	# out = net.forward_all(data=np.asarray([img.transpose(2,0,1)]))
 
